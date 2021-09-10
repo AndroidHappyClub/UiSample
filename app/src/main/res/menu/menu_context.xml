@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/miSettings"
+        android:title="系统设置"
+        android:icon="@mipmap/ic_close">
+        <menu>
+            <group android:checkableBehavior = "none">
+                <item android:id="@+id/miShowSettings" android:title = "显示设置"/>
+                <item android:id="@+id/miNetworkSettings" android:title = "网络设置"/>
+                <item android:id="@+id/miOtherSettings" android:title = "其它设置"/>
+            </group>
+        </menu>
+    </item>
+    <item android:id="@+id/miApplication" android:title = "应用"/>
+</menu>

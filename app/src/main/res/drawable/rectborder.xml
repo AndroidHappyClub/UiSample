@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!-- 设置边框 -->
+    <stroke android:width="2px"
+        android:color="#000000"/>
+    <!-- 设置渐变 angle=“90”表示渐变的起始位置，这个值必须为45的倍数，
+    包括0，0表示从左往右渐变，逆时针旋转，依次是45，90，135.....，90表
+    示从下往上渐变，270表示从上往下渐变。-->
+    <gradient
+        android:angle="270"
+        android:endColor="#C0C0C0"
+        android:startColor="#FCD209" />
+    <!-- 设置边距 -->
+    <padding
+        android:left="10dp"
+        android:top="10dp"
+        android:right="10dp"
+        android:bottom="10dp"/>
+</shape>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="btn_danger_pressed">#ffd2322d</color>
+    <color name="btn_danger_edge">#ffd43f3a</color>
+    <color name="btn_danger_disabled">#a5d9534f</color>
+    <color name="btn_danger_disabled_edge">#a5d43f3a</color>
+    <color name="btn_danger">#ffd9534f</color>
+    <color name="text_font_white">#FFFFFF</color>
+
+    <color name="bg_black">#000000</color>
+    <color name="bg_white">#FFFFFF</color>
+    <color name="bg_topbar">#FCFCFC</color>
+    <color name="bg_gray">#00F1F1F1</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="tab_menu_bg">#FFC4C4C4</color>
+
+    <color name="tab_menu_text_normal_color">#8D7A71</color>
+    <color name="tab_menu_text_white">#FFFFFF</color>
+    <color name="tab_menu_text_checked_color">#0000ff</color>
+    <color name="tab_menu_text_topbar">#694E42</color>
+    <color name="tab_menu_div_white">#E5E5E5</color>
+</resources>

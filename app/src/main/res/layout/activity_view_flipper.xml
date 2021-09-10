@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.water.uisample.ViewFlipperActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!--静态加载-->
+        <ViewFlipper
+            android:id="@+id/vfStatic"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:inAnimation="@anim/right_in"
+            android:outAnimation="@anim/right_out"
+            android:flipInterval="3000"
+            android:layout_weight="1">
+            <include layout="@layout/page_ad_one" />
+            <include layout="@layout/page_ad_two" />
+            <include layout="@layout/page_ad_three" />
+            <include layout="@layout/page_ad_four" />
+        </ViewFlipper>
+        <!--动态加载-->
+        <ViewFlipper
+            android:id="@+id/vfDynamic"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:inAnimation="@anim/right_in"
+            android:outAnimation="@anim/right_out"
+            android:flipInterval="3000"
+            android:layout_weight="1">
+        </ViewFlipper>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

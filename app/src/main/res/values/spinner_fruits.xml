@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="data">
+        <item>黄桃</item>
+        <item>苹果</item>
+        <item>青柠檬</item>
+        <item>石榴</item>
+        <item>桑葚</item>
+        <item>哈密瓜</item>
+        <item>樱桃</item>
+    </string-array>
+</resources>
