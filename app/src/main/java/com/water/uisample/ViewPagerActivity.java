@@ -3,51 +3,53 @@ package com.water.uisample;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
+import com.water.uisample.databinding.ActivityViewPagerBinding;
 
 public class ViewPagerActivity extends AppCompatActivity implements View.OnClickListener{
-    private Button btnOne;
-    private Button btnTwo;
-    private Button btnThree;
-    private Button btnFour;
+
+    private ActivityViewPagerBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_pager);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_view_pager);
         initViews();
     }
 
     private void initViews() {
-        btnOne = findViewById(R.id.btnOne);
-        btnTwo = findViewById(R.id.btnTwo);
-        btnThree = findViewById(R.id.btnThree);
-        btnFour = findViewById(R.id.btnFour);
-        btnOne.setOnClickListener(this);
-        btnTwo.setOnClickListener(this);
-        btnThree.setOnClickListener(this);
-        btnFour.setOnClickListener(this);
+        binding.btnOne.setOnClickListener(this);
+        binding.btnTwo.setOnClickListener(this);
+        binding.btnThree.setOnClickListener(this);
+        binding.btnFour.setOnClickListener(this);
     }
 
+    /**
+     * Reasons for using if statements:
+     * <p>Resource IDs will be non-final by default in Android Gradle Plugin version 8.01,
+     * avoid using them in switch case statements<p/>
+     * @param view View
+     */
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnOne:
-                Intent it =new Intent(ViewPagerActivity.this,
-                        ViewPagerOneActivity.class);
-                startActivity(it);
-                break;
-            case R.id.btnTwo:
-                startActivity(new Intent(this, ViewPagerTwoActivity.class));
-                break;
-            case R.id.btnThree:
-                startActivity(new Intent(this, ViewPagerThreeActivity.class));
-                break;
-            case R.id.btnFour:
-                startActivity(new Intent(this, ViewPagerFourActivity.class));
-                break;
+    public void onClick(View view) {
+        if(view.getId() == R.id.btnOne){
+            Intent it = new Intent(ViewPagerActivity.this, ViewPagerOneActivity.class);
+            startActivity(it);
+        }
+        if(view.getId() == R.id.btnTwo){
+            Intent it = new Intent(ViewPagerActivity.this, ViewPagerTwoActivity.class);
+            startActivity(it);
+        }
+        if(view.getId() == R.id.btnThree){
+            Intent it = new Intent(ViewPagerActivity.this, ViewPagerThreeActivity.class);
+            startActivity(it);
+        }
+        if(view.getId() == R.id.btnFour){
+            Intent it = new Intent(ViewPagerActivity.this, ViewPagerFourActivity.class);
+            startActivity(it);
         }
     }
 }

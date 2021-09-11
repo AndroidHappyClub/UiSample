@@ -9,4 +9,10 @@
     <string name="tab_menu_pay">我的</string>
     <string name="tab_menu_setting">设置</string>
     <string name="play_text">播放</string>
+    <string name="viewpager_example_1">ViewPager使用示例1</string>
+    <string name="viewpager_example_2">ViewPager使用示例2</string>
+    <string name="viewpager_example_3">ViewPager使用示例3</string>
+    <string name="viewpager_example_4">ViewPager使用示例4</string>
+    <string name="pager_title_strip_example">PagerTitleStrip效果演示</string>
+    <string name="tab_line">tab指示条</string>
 </resources>

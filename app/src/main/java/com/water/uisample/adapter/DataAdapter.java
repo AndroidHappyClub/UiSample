@@ -9,11 +9,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.DrawableRes;
+
 import java.util.ArrayList;
 
 public abstract class DataAdapter<T> extends BaseAdapter {
     private ArrayList<T> _data;
-    private int _layout;           //布局id
+    private final int _layout;           //布局id
 
     public DataAdapter(ArrayList<T> data, int layout) {
         this._data = data;
@@ -22,7 +24,6 @@ public abstract class DataAdapter<T> extends BaseAdapter {
 
     @Override
     public int getCount() {
-
         return _data != null ? _data.size() : 0;
     }
 
@@ -87,15 +88,14 @@ public abstract class DataAdapter<T> extends BaseAdapter {
     }
 
     public static class ViewHolder {
-        private SparseArray<View> _views;   //存储ListView 的 item中的View
+        private final SparseArray<View> _views;   //存储ListView 的 item中的View
         private View _item;                  //存放convertView
         private int _position;               //游标
-        private Context _context;            //Context上下文
 
         //构造方法，完成相关初始化
         private ViewHolder(Context context, ViewGroup parent, int layoutRes) {
             _views = new SparseArray<>();
-            _context = context;
+            //Context上下文
             View convertView = LayoutInflater.from(context).inflate(layoutRes, parent, false);
             convertView.setTag(this);
             _item = convertView;
@@ -153,14 +153,13 @@ public abstract class DataAdapter<T> extends BaseAdapter {
         /**
          * 设置图片
          */
-        public ViewHolder setImageResource(int id, int drawableRes) {
+        public void setImageResource(int id, @DrawableRes int drawableRes) {
             View view = getView(id);
             if (view instanceof ImageView) {
                 ((ImageView) view).setImageResource(drawableRes);
             } else {
                 view.setBackgroundResource(drawableRes);
             }
-            return this;
         }
 
         /**
