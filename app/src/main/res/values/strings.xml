@@ -15,4 +15,13 @@
     <string name="viewpager_example_4">ViewPager使用示例4</string>
     <string name="pager_title_strip_example">PagerTitleStrip效果演示</string>
     <string name="tab_line">tab指示条</string>
+    <string name="button">按钮</string>
+    <string name="button_unable">按钮不可用</string>
+    <string name="show_normal_dialog">显示普通对话框</string>
+    <string name="show_normal_list_dialog">显示普通列表对话框</string>
+    <string name="show_single_selection_list_dialog">显示单选列表对话框</string>
+    <string name="show_multiple_selection_list_dialog">显示多选列表对话框</string>
+    <string name="show_custom_layout_dialog">显示自定义布局对话框</string>
+    <string name="scroll_waiting_dialog">滚动等待对话框</string>
+    <string name="progress_bar_dialog">进度条对话框</string>
 </resources>

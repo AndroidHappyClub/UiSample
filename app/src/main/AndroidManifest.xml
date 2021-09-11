@@ -22,11 +22,13 @@
             <!--            <category android:name="android.intent.category.LAUNCHER" />-->
             <!--            </intent-filter>-->
         </activity>
-        <activity android:name=".ButtonActivity">
-
+        <activity
+            android:name=".ButtonActivity"
+            android:exported="true">
             <!--            <intent-filter>-->
-            <!--            <action android:name="android.intent.action.MAIN" />-->
-            <!--            <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
+
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
             <!--            </intent-filter>-->
         </activity>
         <activity android:name=".RadioButtonActivity">
@@ -71,12 +73,13 @@
             <!--             <category android:name="android.intent.category.LAUNCHER" />-->
             <!--             </intent-filter>-->
         </activity>
-        <activity android:name=".DialogActivity">
-
-            <!--             <intent-filter>-->
-            <!--             <action android:name="android.intent.action.MAIN" />-->
-            <!--             <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--             </intent-filter>-->
+        <activity
+            android:name=".DialogActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".FragmentActivity">
 
@@ -98,13 +101,14 @@
             <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
-        <activity android:name=".ImageListViewActivity"
+        <activity
+            android:name=".ImageListViewActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
+            <!--                -->
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
         </activity>
         <activity android:name=".GridViewActivity">
 
@@ -148,24 +152,24 @@
         <activity
             android:name=".ViewPagerActivity"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
         </activity>
         <activity android:name=".ViewPagerOneActivity" />
         <activity android:name=".ViewPagerTwoActivity" />
         <activity android:name=".ViewPagerThreeActivity" />
         <activity android:name=".ViewPagerFourActivity" />
-        <activity android:name=".BottomViewPagerActivity">
+        <activity
+            android:name=".BottomViewPagerActivity"
+            android:exported="true">
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
 
-            <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
-
-
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
         </activity>
         <activity android:name=".MenuActivity">
 
