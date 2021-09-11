@@ -1,10 +1,11 @@
 package com.water.uisample;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ViewPagerActivity extends AppCompatActivity implements View.OnClickListener{
     private Button btnOne;
@@ -20,10 +21,10 @@ public class ViewPagerActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void initViews() {
-        btnOne = (Button) findViewById(R.id.btnOne);
-        btnTwo = (Button) findViewById(R.id.btnTwo);
-        btnThree = (Button) findViewById(R.id.btnThree);
-        btnFour = (Button) findViewById(R.id.btnFour);
+        btnOne = findViewById(R.id.btnOne);
+        btnTwo = findViewById(R.id.btnTwo);
+        btnThree = findViewById(R.id.btnThree);
+        btnFour = findViewById(R.id.btnFour);
         btnOne.setOnClickListener(this);
         btnTwo.setOnClickListener(this);
         btnThree.setOnClickListener(this);

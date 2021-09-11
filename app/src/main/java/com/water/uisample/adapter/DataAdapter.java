@@ -15,9 +15,6 @@ public abstract class DataAdapter<T> extends BaseAdapter {
     private ArrayList<T> _data;
     private int _layout;           //布局id
 
-    public DataAdapter() {
-    }
-
     public DataAdapter(ArrayList<T> data, int layout) {
         this._data = data;
         this._layout = layout;

@@ -1,14 +1,14 @@
 package com.water.uisample;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ViewFlipperActivity extends AppCompatActivity
         implements View.OnTouchListener,

@@ -13,7 +13,9 @@ import android.view.animation.TranslateAnimation;
 
 import com.water.uisample.R;
 
-public class ClearEditText extends android.support.v7.widget.AppCompatEditText
+import java.util.Objects;
+
+public class ClearEditText extends androidx.appcompat.widget.AppCompatEditText
         implements View.OnFocusChangeListener, TextWatcher {
     //右边的删除按钮
     private Drawable mClearDrawable;
@@ -55,7 +57,7 @@ public class ClearEditText extends android.support.v7.widget.AppCompatEditText
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
         if (hasFocus) {
-            setClearIcon(getText().length() > 0);
+            setClearIcon(Objects.requireNonNull(getText()).length() > 0);
         } else {
             setClearIcon(false);
         }

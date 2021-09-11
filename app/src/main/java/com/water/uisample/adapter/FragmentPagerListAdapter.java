@@ -1,15 +1,16 @@
 package com.water.uisample.adapter;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 
 public class FragmentPagerListAdapter extends FragmentPagerAdapter {
 
-    private ArrayList<Fragment> _fras = null;
+    private ArrayList<Fragment> _fras;
 
     public FragmentPagerListAdapter(FragmentManager fm, ArrayList<Fragment> fragments) {
         super(fm);

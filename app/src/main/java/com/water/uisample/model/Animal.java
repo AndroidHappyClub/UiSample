@@ -4,9 +4,6 @@ public class Animal {
     private int _thumb;
     private String _name;
 
-    public Animal() {
-    }
-
     public Animal(int thumb, String name) {
         this._thumb = thumb;
         this._name = name;

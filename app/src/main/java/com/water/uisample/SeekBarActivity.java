@@ -1,14 +1,13 @@
 package com.water.uisample;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.SeekBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class SeekBarActivity extends AppCompatActivity {
-    private SeekBar sbCustom;
     private SeekBar sbNormal;
     private Context _context;
 
@@ -21,8 +20,8 @@ public class SeekBarActivity extends AppCompatActivity {
     }
 
     private void bindViews() {
-        sbCustom = (SeekBar) findViewById(R.id.sbCustom);
-        sbNormal= (SeekBar) findViewById(R.id.sbNormal);
+        SeekBar sbCustom = findViewById(R.id.sbCustom);
+        sbNormal= findViewById(R.id.sbNormal);
 
         sbCustom.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override

@@ -19,14 +19,8 @@ public class InheritListActivity extends ListActivity {
         _lv =getListView();
         setListAdapter(new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, _ls));
-        _lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Toast.makeText(InheritListActivity.this,
-                        "您选择了" + _ls[position], Toast.LENGTH_LONG).show();
-            }
-        });
+        _lv.setOnItemClickListener((parent, view, position, id) -> Toast.makeText(InheritListActivity.this,
+                "您选择了" + _ls[position], Toast.LENGTH_LONG).show());
         //设置ListView作为显示
         super.onCreate(savedInstanceState);
     }

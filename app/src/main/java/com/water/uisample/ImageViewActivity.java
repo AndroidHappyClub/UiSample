@@ -1,12 +1,13 @@
 package com.water.uisample;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ImageViewActivity extends AppCompatActivity implements View.OnClickListener {
     //国旗对应的ImageView
@@ -28,12 +29,12 @@ public class ImageViewActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_image_view);
 
         //初始化组件
-        ivFlag = (ImageView) findViewById(R.id.ivFlag);
+        ivFlag = findViewById(R.id.ivFlag);
         //国旗名称
-        tvFlag = (TextView)findViewById(R.id.tvFlag);
+        tvFlag = findViewById(R.id.tvFlag);
         //上一页、下一页
-        imBack = (ImageButton)findViewById(R.id.imBack);
-        imForward = (ImageButton)findViewById(R.id.imForward);
+        imBack = findViewById(R.id.imBack);
+        imForward = findViewById(R.id.imForward);
         //注册监听器
         imBack.setOnClickListener(this);
         imForward.setOnClickListener(this);

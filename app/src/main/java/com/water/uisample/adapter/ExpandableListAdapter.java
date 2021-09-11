@@ -15,14 +15,14 @@ import java.util.ArrayList;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
-    private ArrayList<BaseItem> _gdata;
-    private ArrayList<ArrayList<BaseItem>> _idata;
-    private Context _ctx;
+    private final ArrayList<BaseItem> _gdata;
+    private final ArrayList<ArrayList<BaseItem>> _data;
+    private final Context _ctx;
 
     public ExpandableListAdapter(ArrayList<BaseItem> gdata,
-                                 ArrayList<ArrayList<BaseItem>> idata, Context ctx) {
+                                 ArrayList<ArrayList<BaseItem>> data, Context ctx) {
         this._gdata = gdata;
-        this._idata = idata;
+        this._data = data;
         this._ctx = ctx;
     }
 
@@ -33,7 +33,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return _idata.get(groupPosition).size();
+        return _data.get(groupPosition).size();
     }
 
     @Override
@@ -43,7 +43,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public BaseItem getChild(int groupPosition, int childPosition) {
-        return _idata.get(groupPosition).get(childPosition);
+        return _data.get(groupPosition).get(childPosition);
     }
 
     @Override
@@ -89,15 +89,15 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             convertView = LayoutInflater.from(_ctx).inflate(
                     R.layout.list_view_item, parent, false);
             itemHolder = new ViewHolderItem();
-            itemHolder.ivThumb = (ImageView) convertView.findViewById(R.id.ivThumb);
-            itemHolder.tvName = (TextView) convertView.findViewById(R.id.tvName);
+            itemHolder.ivThumb = convertView.findViewById(R.id.ivThumb);
+            itemHolder.tvName = convertView.findViewById(R.id.tvName);
             convertView.findViewById(R.id.tvAuthor).setVisibility(View.GONE);
             convertView.setTag(itemHolder);
         }else{
             itemHolder = (ViewHolderItem) convertView.getTag();
         }
-        itemHolder.ivThumb.setImageResource(_idata.get(groupPosition).get(childPosition).getThumb());
-        itemHolder.tvName.setText(_idata.get(groupPosition).get(childPosition).getName());
+        itemHolder.ivThumb.setImageResource(_data.get(groupPosition).get(childPosition).getThumb());
+        itemHolder.tvName.setText(_data.get(groupPosition).get(childPosition).getName());
         return convertView;
     }
 

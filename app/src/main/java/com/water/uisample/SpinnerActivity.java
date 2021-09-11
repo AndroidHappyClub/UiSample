@@ -1,7 +1,6 @@
 package com.water.uisample;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +9,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.water.uisample.adapter.DataAdapter;
 import com.water.uisample.model.Fruit;
 
@@ -17,12 +18,9 @@ import java.util.ArrayList;
 
 public class SpinnerActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private Spinner cbOne;
-    private Spinner cbTwo;
     private Context _context;
 
     private ArrayList<Fruit> _data = null;
-    private BaseAdapter _adadpter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +28,15 @@ public class SpinnerActivity extends AppCompatActivity implements AdapterView.On
         setContentView(R.layout.activity_spinner);
 
         _context = SpinnerActivity.this;
-        _data = new ArrayList<Fruit>();
+        _data = new ArrayList<>();
 
         bindViews();
     }
 
 
     private void bindViews() {
-        cbOne = (Spinner) findViewById(R.id.cbOne);
-        cbTwo = (Spinner) findViewById(R.id.cbTwo);
+        Spinner cbOne = findViewById(R.id.cbOne);
+        Spinner cbTwo = findViewById(R.id.cbTwo);
 
         _data.add(new Fruit(R.mipmap.ic_fruit_huangtao, "黄桃"));
         _data.add(new Fruit(R.mipmap.ic_fruit_pingguo, "苹果"));
@@ -48,7 +46,7 @@ public class SpinnerActivity extends AppCompatActivity implements AdapterView.On
         _data.add(new Fruit(R.mipmap.ic_fruit_hamigua, "哈密瓜"));
         _data.add(new Fruit(R.mipmap.ic_fruit_yingtao, "樱桃"));
 
-        _adadpter = new DataAdapter<Fruit>(_data, R.layout.spinner_item_fruit) {
+        BaseAdapter _adadpter = new DataAdapter<Fruit>(_data, R.layout.spinner_item_fruit) {
             @Override
             public void bindViews(ViewHolder holder, Fruit obj) {
                 holder.setImageResource(R.id.ivThumb, obj.getThumb());
@@ -72,7 +70,7 @@ public class SpinnerActivity extends AppCompatActivity implements AdapterView.On
                         Toast.LENGTH_SHORT).show();
                 break;
             case R.id.cbTwo:
-                TextView tv = (TextView) view.findViewById(R.id.tvName);
+                TextView tv = view.findViewById(R.id.tvName);
                 Toast.makeText(_context, "您选择的水果是：" +
                                 tv.getText().toString(),
                         Toast.LENGTH_SHORT).show();

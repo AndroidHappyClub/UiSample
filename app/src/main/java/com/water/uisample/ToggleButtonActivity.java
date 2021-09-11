@@ -1,8 +1,8 @@
 package com.water.uisample;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Switch;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ToggleButtonActivity extends AppCompatActivity {
 

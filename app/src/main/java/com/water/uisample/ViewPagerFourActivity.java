@@ -3,8 +3,6 @@ package com.water.uisample;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
@@ -16,6 +14,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import com.water.uisample.adapter.PagerListAdapter;
 
 import java.util.ArrayList;
@@ -25,16 +26,11 @@ public class ViewPagerFourActivity extends AppCompatActivity implements
         ViewPager.OnPageChangeListener {
 
     private ViewPager vpFour;
-    private LinearLayout llTitle;
     private ImageView ivCursor;
 
-    private String[] _titles = {"第一页","第二页","第三页","第四页"};
-//    private TextView tvOne;
-//    private TextView tvTwo;
-//    private TextView tvThree;
+    private final String[] _titles = {"第一页","第二页","第三页","第四页"};
 
-    private ArrayList<View> _views;
-    private int[] _pages = {
+    private final int[] _pages = {
             R.layout.page_ad_one,
             R.layout.page_ad_two,
             R.layout.page_ad_three,
@@ -43,8 +39,8 @@ public class ViewPagerFourActivity extends AppCompatActivity implements
     private int _offset = 0;//移动条图片的偏移量
     private int _currIndex = 0;//当前页面的编号
     private int _lineWidth;// 移动条图片的长度
-    private int one = 0; //移动条滑动一页的距离
-    private int two = 0; //滑动条移动两页的距离
+    //移动条滑动一页的距离
+    //滑动条移动两页的距离
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,8 +51,8 @@ public class ViewPagerFourActivity extends AppCompatActivity implements
 
 
     private void initViews() {
-        vpFour = (ViewPager) findViewById(R.id.vpFour);
-        llTitle =(LinearLayout)findViewById(R.id.llTitle);
+        vpFour = findViewById(R.id.vpFour);
+        LinearLayout llTitle = findViewById(R.id.llTitle);
 
         for (int index =0; index < _titles.length; index++) {
             TextView tv = new TextView(this);
@@ -76,7 +72,7 @@ public class ViewPagerFourActivity extends AppCompatActivity implements
             llTitle.addView(tv, lp);
         }
 
-        ivCursor = (ImageView) findViewById(R.id.ivCursor);
+        ivCursor = findViewById(R.id.ivCursor);
 
         //下划线动画的相关设置：
         _lineWidth = BitmapFactory.decodeResource(getResources(), R.mipmap.line).getWidth();// 获取图片宽度
@@ -89,7 +85,7 @@ public class ViewPagerFourActivity extends AppCompatActivity implements
         ivCursor.setImageMatrix(matrix);// 设置动画初始位置
 
         //往ViewPager填充View，同时设置点击事件与页面切换事件
-        _views = new ArrayList<View>();
+        ArrayList<View> _views = new ArrayList<>();
         LayoutInflater li = getLayoutInflater();
         for(int id:_pages) {
             _views.add(li.inflate(id, null, false));
@@ -108,7 +104,7 @@ public class ViewPagerFourActivity extends AppCompatActivity implements
 
     @Override
     public void onPageSelected(int index) {
-        Animation animation = null;
+        Animation animation;
 
         int from = _lineWidth*_currIndex +_offset*_currIndex*2;
         int to = _lineWidth*index +_offset*index*2;

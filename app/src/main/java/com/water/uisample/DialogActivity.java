@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,21 +12,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class DialogActivity extends AppCompatActivity
-        implements View.OnClickListener {
-    private Button btnNormalDialog;
-    private Button btnListDialog;
-    private Button btnSingleDialog;
-    private Button btnMultipleDialog;
-    private Button btnCustomDialog;
-    private Button btnCircleDialog;
-    private Button btnBarDialog;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class DialogActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Context _context;
     private boolean[] _selectedItems;
 
     private AlertDialog _ad = null;
-    private AlertDialog.Builder _builder = null;
 
     int count =0;
 
@@ -38,13 +30,13 @@ public class DialogActivity extends AppCompatActivity
         setContentView(R.layout.activity_dialog);
         _context = DialogActivity.this;
 
-        btnNormalDialog = findViewById(R.id.btnNormalDialog);
-        btnListDialog = (Button) findViewById(R.id.btnListDialog);
-        btnSingleDialog = (Button) findViewById(R.id.btnSingleDialog);
-        btnMultipleDialog = (Button) findViewById(R.id.btnMultipleDialog);
-        btnCustomDialog = (Button) findViewById(R.id.btnCustomDialog);
-        btnCircleDialog = (Button) findViewById(R.id.btnCircleDialog);
-        btnBarDialog = (Button) findViewById(R.id.btnBarDialog);
+        Button btnNormalDialog = findViewById(R.id.btnNormalDialog);
+        Button btnListDialog = findViewById(R.id.btnListDialog);
+        Button btnSingleDialog = findViewById(R.id.btnSingleDialog);
+        Button btnMultipleDialog = findViewById(R.id.btnMultipleDialog);
+        Button btnCustomDialog = findViewById(R.id.btnCustomDialog);
+        Button btnCircleDialog = findViewById(R.id.btnCircleDialog);
+        Button btnBarDialog = findViewById(R.id.btnBarDialog);
 
         btnNormalDialog.setOnClickListener(this);
         btnListDialog.setOnClickListener(this);
@@ -61,28 +53,13 @@ public class DialogActivity extends AppCompatActivity
             // 显示普通对话框
             case R.id.btnNormalDialog:
                 _ad = null;
-                _builder = new AlertDialog.Builder(_context);
+                AlertDialog.Builder _builder = new AlertDialog.Builder(_context);
                 _ad = _builder.setIcon(R.mipmap.ic_sina_logo)
                         .setTitle("系统提示：")
                         .setMessage("这是一个最普通的AlertDialog,\n带有三个按钮，分别是取消，中立和确定")
-                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(_context, "你点击了取消按钮！", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(_context, "你点击了确定按钮！", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .setNeutralButton("中立", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(_context, "你点击了中立按钮！", Toast.LENGTH_SHORT).show();
-                            }
-                        }).create();             // 创建AlertDialog对象
+                        .setNegativeButton("取消", (dialog, which) -> Toast.makeText(_context, "你点击了取消按钮！", Toast.LENGTH_SHORT).show())
+                        .setPositiveButton("确定", (dialog, which) -> Toast.makeText(_context, "你点击了确定按钮！", Toast.LENGTH_SHORT).show())
+                        .setNeutralButton("中立", (dialog, which) -> Toast.makeText(_context, "你点击了中立按钮！", Toast.LENGTH_SHORT).show()).create();             // 创建AlertDialog对象
                 _ad.show();                    //  显示对话框
                 break;
 
@@ -93,12 +70,7 @@ public class DialogActivity extends AppCompatActivity
                 _builder = new AlertDialog.Builder(_context);
                 _ad = _builder.setIcon(R.mipmap.ic_camera_viewer_effect_pressed)
                         .setTitle("选择你喜欢的课程")
-                        .setItems(lesson, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(getApplicationContext(), "你选择了" + lesson[which], Toast.LENGTH_SHORT).show();
-                            }
-                        }).create();
+                        .setItems(lesson, (dialog, which) -> Toast.makeText(getApplicationContext(), "你选择了" + lesson[which], Toast.LENGTH_SHORT).show()).create();
                 _ad.show();
                 break;
 
@@ -109,18 +81,8 @@ public class DialogActivity extends AppCompatActivity
                 _builder = new AlertDialog.Builder(_context);
                 _ad = _builder.setIcon(R.mipmap.ic_settings_photowonder)
                         .setTitle("选择你喜欢的水果，只能选一个哦！")
-                        .setSingleChoiceItems(fruits, 0, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(getApplicationContext(), "你选择了" + fruits[which], Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(_context, "你点击了确定按钮！", Toast.LENGTH_SHORT).show();
-                            }
-                        }).create();
+                        .setSingleChoiceItems(fruits, 0, (dialog, which) -> Toast.makeText(getApplicationContext(), "你选择了" + fruits[which], Toast.LENGTH_SHORT).show())
+                        .setPositiveButton("确定", (dialog, which) -> Toast.makeText(_context, "你点击了确定按钮！", Toast.LENGTH_SHORT).show()).create();
                 _ad.show();
                 break;
 
@@ -132,22 +94,14 @@ public class DialogActivity extends AppCompatActivity
                 _ad = null;
                 _builder = new AlertDialog.Builder(_context);
                 _ad = _builder.setIcon(R.mipmap.ic_camera_viewer_seft_pressed)
-                        .setMultiChoiceItems(menu, _selectedItems, new DialogInterface.OnMultiChoiceClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                                _selectedItems[which] = isChecked;
+                        .setMultiChoiceItems(menu, _selectedItems, (dialog, which, isChecked) -> _selectedItems[which] = isChecked)
+                        .setPositiveButton("确定", (dialog, which) -> {
+                            String result = "";
+                            for (int i = 0; i < _selectedItems.length; i++) {
+                                if (_selectedItems[i])
+                                    result += menu[i] + " ";
                             }
-                        })
-                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                String result = "";
-                                for (int i = 0; i < _selectedItems.length; i++) {
-                                    if (_selectedItems[i])
-                                        result += menu[i] + " ";
-                                }
-                                Toast.makeText(getApplicationContext(), "客官你点了:" + result, Toast.LENGTH_SHORT).show();
-                            }
+                            Toast.makeText(getApplicationContext(), "客官你点了:" + result, Toast.LENGTH_SHORT).show();
                         })
                         .create();
                 _ad.show();
@@ -164,36 +118,25 @@ public class DialogActivity extends AppCompatActivity
                 _builder.setCancelable(false);
                 _ad = _builder.create();
 
-                view.findViewById(R.id.btnCancle).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        _ad.dismiss();
-                    }
-                });
+                view.findViewById(R.id.btnCancle).setOnClickListener(v1 -> _ad.dismiss());
 
                 ((TextView)view.findViewById(R.id.tvTitle)).setText("通知");
 
                 ((TextView)view.findViewById(R.id.tvContent)).setText("3月17日，十三届全国人大一次会议在北京人民大会堂举行第五次全体会议。王岐山当选为中华人民共和国副主席。这是王岐山进行宪法宣誓。");
 
-                view.findViewById(R.id.btnBlog).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(getApplicationContext(), "访问博客",
-                                Toast.LENGTH_SHORT).show();
-                        Uri uri = Uri.parse("http://blog.sina.cn");
-                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                        startActivity(intent);
-                        _ad.dismiss();
-                    }
+                view.findViewById(R.id.btnBlog).setOnClickListener(v12 -> {
+                    Toast.makeText(getApplicationContext(), "访问博客",
+                            Toast.LENGTH_SHORT).show();
+                    Uri uri = Uri.parse("http://blog.sina.cn");
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);
+                    _ad.dismiss();
                 });
 
-                view.findViewById(R.id.btnClose).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(getApplicationContext(), "对话框已关闭！",
-                                Toast.LENGTH_SHORT).show();
-                        _ad.dismiss();
-                    }
+                view.findViewById(R.id.btnClose).setOnClickListener(v13 -> {
+                    Toast.makeText(getApplicationContext(), "对话框已关闭！",
+                            Toast.LENGTH_SHORT).show();
+                    _ad.dismiss();
                 });
 
                 _ad.show();
@@ -209,16 +152,13 @@ public class DialogActivity extends AppCompatActivity
                 cd.setMessage("正在加载....");
                 cd.setCancelable(false);
                 cd.show();
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep(15000);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        } finally {
-                            cd.dismiss();
-                        }
+                new Thread(() -> {
+                    try {
+                        Thread.sleep(15000);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        cd.dismiss();
                     }
                 }).start();
                 break;
@@ -250,7 +190,7 @@ public class DialogActivity extends AppCompatActivity
                             bd.setProgress(count++);
                             try {
                                 Thread.sleep(100);  //暂停 0.1秒
-                            } catch (Exception e) {
+                            } catch (Exception ignored) {
                             }
                         }
                         bd.dismiss();

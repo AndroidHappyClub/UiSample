@@ -1,14 +1,13 @@
 package com.water.uisample;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class ProgressBarActivity extends AppCompatActivity {
     private ProgressBar pbPlay;
-    private Button btnPlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,14 +19,11 @@ public class ProgressBarActivity extends AppCompatActivity {
     private void bindViews()
     {
         pbPlay = findViewById(R.id.pbPlay);
-        btnPlay = findViewById(R.id.btnPlay);
-        btnPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int progress = pbPlay.getProgress();
-                pbPlay.setProgress(progress + 1);
-                pbPlay.setSecondaryProgress(pbPlay.getSecondaryProgress() + 1);
-            }
+        Button btnPlay = findViewById(R.id.btnPlay);
+        btnPlay.setOnClickListener(view -> {
+            int progress = pbPlay.getProgress();
+            pbPlay.setProgress(progress + 1);
+            pbPlay.setSecondaryProgress(pbPlay.getSecondaryProgress() + 1);
         });
     }
 }

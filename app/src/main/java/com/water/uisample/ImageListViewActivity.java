@@ -1,12 +1,13 @@
 package com.water.uisample;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.water.uisample.adapter.DataAdapter;
 import com.water.uisample.model.Book;
@@ -40,7 +41,7 @@ public class ImageListViewActivity extends AppCompatActivity
 
     private void bindViews() {
 
-        lvBook = (ListView) findViewById(R.id.lvBook);
+        lvBook = findViewById(R.id.lvBook);
 
         //数据初始化
         _books = new ArrayList<Book>();

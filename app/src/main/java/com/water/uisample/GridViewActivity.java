@@ -1,13 +1,14 @@
 package com.water.uisample;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.water.uisample.adapter.DataAdapter;
 import com.water.uisample.model.ShareData;
@@ -25,9 +26,9 @@ public class GridViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid_view);
         _context = GridViewActivity.this;
-        _gvMain = (GridView) findViewById(R.id.gvShare);
+        _gvMain = findViewById(R.id.gvShare);
 
-        _data = new ArrayList<ShareData>();
+        _data = new ArrayList<>();
         _data.add(new ShareData(R.mipmap.ic_share_facebook_normal, "facebook"));
         _data.add(new ShareData(R.mipmap.ic_share_kakao_normal, "kakao"));
         _data.add(new ShareData(R.mipmap.ic_share_kakaostory_normal, "kakaostory"));
@@ -50,13 +51,8 @@ public class GridViewActivity extends AppCompatActivity {
 
         _gvMain.setAdapter(_adapter);
 
-        _gvMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(_context, "你点击了第 " + position + " 项",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+        _gvMain.setOnItemClickListener((parent, view, position, id) -> Toast.makeText(_context, "你点击了第 " + position + " 项",
+                Toast.LENGTH_SHORT).show());
 
     }
 }

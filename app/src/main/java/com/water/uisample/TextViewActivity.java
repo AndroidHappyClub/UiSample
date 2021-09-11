@@ -3,7 +3,6 @@ package com.water.uisample;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.SpannableString;
@@ -20,6 +19,8 @@ import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.lang.reflect.Field;
 

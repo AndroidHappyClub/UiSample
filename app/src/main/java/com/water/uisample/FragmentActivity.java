@@ -1,13 +1,14 @@
 package com.water.uisample;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.water.uisample.fragment.FragmentSample;
 
@@ -30,9 +31,9 @@ public class FragmentActivity extends AppCompatActivity implements
         _fm = getSupportFragmentManager();
         _dict = new HashMap<String, Fragment>();
 
-        btnOne =(Button)findViewById(R.id.btnOne);
-        btnTwo =(Button)findViewById(R.id.btnTwo);
-        btnThree =(Button)findViewById(R.id.btnThree);
+        btnOne = findViewById(R.id.btnOne);
+        btnTwo = findViewById(R.id.btnTwo);
+        btnThree = findViewById(R.id.btnThree);
 
         btnOne.setOnClickListener(this);
         btnTwo.setOnClickListener(this);
