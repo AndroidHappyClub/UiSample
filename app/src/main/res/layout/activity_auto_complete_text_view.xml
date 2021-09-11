@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.water.uisample.AutoCompleteTextViewActivity">
-    <LinearLayout
+<layout>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <AutoCompleteTextView
-            android:id="@+id/actvContent"
+        tools:context="com.water.uisample.AutoCompleteTextViewActivity">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:completionHint="请输入搜索内容"
-            android:completionThreshold="1"
-            android:dropDownHorizontalOffset="5dp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <MultiAutoCompleteTextView
-            android:id="@+id/mactvContent"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:completionThreshold="1"
-            android:dropDownHorizontalOffset="5dp"
-            android:text="" />
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/ACTVContent"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:completionHint="请输入搜索内容"
+                android:completionThreshold="1"
+                android:dropDownHorizontalOffset="5dp" />
 
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatMultiAutoCompleteTextView
+                android:id="@+id/MACTVContent"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:completionThreshold="1"
+                android:dropDownHorizontalOffset="5dp"
+                android:text="" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,5 +1,6 @@
 package com.water.uisample;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,52 +10,55 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
+import com.water.uisample.databinding.ActivityViewFlipperBinding;
 
 public class ViewFlipperActivity extends AppCompatActivity
         implements View.OnTouchListener,
         View.OnClickListener {
-    private ViewFlipper _svf;
-    private ViewFlipper _dvf;
-    private float touchDownX;  // 手指按下的X坐标
-    private float touchUpX;  //手指松开的X坐标
 
+    private float touchDownX;  // 手指按下的X坐标
+
+    private ActivityViewFlipperBinding binding;
+
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_flipper);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_view_flipper);
 
-        _svf = (ViewFlipper) findViewById(R.id.vfStatic);
-        _svf.setOnTouchListener(this);
+        binding.vfStatic.setOnTouchListener(this);
 
-        _dvf = (ViewFlipper) findViewById(R.id.vfDynamic);
-        _dvf.addView(createView(R.mipmap.bg_one, "one"));
-        _dvf.addView(createView(R.mipmap.bg_two,"two"));
-        _dvf.addView(createView(R.mipmap.bg_three,"three"));
-        _dvf.addView(createView(R.mipmap.bg_four,"four"));
-        _dvf.addView(createView(R.mipmap.bg_five,"five"));
-        _dvf.setOnTouchListener(this);
-        _dvf.setOnClickListener(this);
-        _dvf.startFlipping();
+        binding.vfDynamic.addView(createView(R.mipmap.bg_one, "one"));
+        binding.vfDynamic.addView(createView(R.mipmap.bg_two,"two"));
+        binding.vfDynamic.addView(createView(R.mipmap.bg_three,"three"));
+        binding.vfDynamic.addView(createView(R.mipmap.bg_four,"four"));
+        binding.vfDynamic.addView(createView(R.mipmap.bg_five,"five"));
+        binding.vfDynamic.setOnTouchListener(this);
+        binding.vfDynamic.setOnClickListener(this);
+        binding.vfDynamic.startFlipping();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         ViewFlipper vf;
 
-        if (v == _svf)
-            vf =_svf;
+        if (v == binding.vfStatic)
+            vf = binding.vfStatic;
         else
-            vf = _dvf;
+            vf = binding.vfDynamic;
 
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             // 取得左右滑动时手指按下的X坐标
             touchDownX = event.getX();
 
-            if (v == _svf)
-                return true;
+            return v == binding.vfStatic;
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             // 取得左右滑动时手指松开的X坐标
-            touchUpX = event.getX();
+            //手指松开的X坐标
+            float touchUpX = event.getX();
             if (touchUpX - touchDownX > 100 || touchDownX - touchUpX > 100) {
                 // 从左往右，看前一个View
                 if (touchUpX - touchDownX > 100) {
@@ -95,7 +99,7 @@ public class ViewFlipperActivity extends AppCompatActivity
 
     @Override
     public void onClick(View view) {
-        ImageView iv = (ImageView)_dvf.getCurrentView();
+        ImageView iv = (ImageView) binding.vfDynamic.getCurrentView();
         Toast.makeText(ViewFlipperActivity.this, (String)iv.getTag(),
                 Toast.LENGTH_SHORT).show();
     }

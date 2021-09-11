@@ -2,6 +2,7 @@ package com.water.uisample.adapter;
 
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -10,33 +11,35 @@ import java.util.ArrayList;
 
 public class FragmentPagerListAdapter extends FragmentPagerAdapter {
 
-    private ArrayList<Fragment> _fras;
+    private final ArrayList<Fragment> _fragments;
 
     public FragmentPagerListAdapter(FragmentManager fm, ArrayList<Fragment> fragments) {
         super(fm);
-        _fras = fragments;
+        _fragments = fragments;
     }
 
 
     @Override
     public int getCount() {
-        return _fras.size();
+        return _fragments.size();
     }
 
+    @NonNull
     @Override
-    public Object instantiateItem(ViewGroup vg, int position) {
+    public Object instantiateItem(@NonNull ViewGroup vg, int position) {
         return super.instantiateItem(vg, position);
     }
 
     @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        System.out.println("position Destory" + position);
+    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+        System.out.println("position Destroy" + position);
         super.destroyItem(container, position, object);
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int position) {
-        return _fras.get(position);
+        return _fragments.get(position);
     }
 
 

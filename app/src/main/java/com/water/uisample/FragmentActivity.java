@@ -2,57 +2,38 @@ package com.water.uisample;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.water.uisample.databinding.ActivityFragmentBinding;
 import com.water.uisample.fragment.FragmentSample;
 
 import java.util.HashMap;
+import java.util.Objects;
 
-public class FragmentActivity extends AppCompatActivity implements
-        View.OnClickListener, FragmentSample.OnItemSelectedListener {
-    private Button btnOne;
-    private Button btnTwo;
-    private Button btnThree;
+public class FragmentActivity extends AppCompatActivity implements FragmentSample.OnItemSelectedListener {
     private FragmentManager _fm;
     private HashMap<String, Fragment> _dict;
     private Fragment _currentFragment = null;
 
+    private ActivityFragmentBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fragment);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_fragment);
 
         _fm = getSupportFragmentManager();
-        _dict = new HashMap<String, Fragment>();
+        _dict = new HashMap<>();
 
-        btnOne = findViewById(R.id.btnOne);
-        btnTwo = findViewById(R.id.btnTwo);
-        btnThree = findViewById(R.id.btnThree);
-
-        btnOne.setOnClickListener(this);
-        btnTwo.setOnClickListener(this);
-        btnThree.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View view)
-    {
-        switch (view.getId())
-        {
-            case R.id.btnOne:
-            case R.id.btnTwo:
-            case R.id.btnThree:
-                replaceFragment((String)view.getTag());
-
-                //switchFragment((String)view.getTag());
-                break;
-        }
+        binding.btnOne.setOnClickListener(v -> replaceFragment((String) v.getTag()));
+        binding.btnTwo.setOnClickListener(v -> replaceFragment((String) v.getTag()));
+        binding.btnThree.setOnClickListener(v -> replaceFragment((String) v.getTag()));
     }
 
     private void replaceFragment(String tag){
@@ -68,7 +49,7 @@ public class FragmentActivity extends AppCompatActivity implements
             }
         }
 
-        replaceFragment(_dict.get(tag));
+        replaceFragment(Objects.requireNonNull(_dict.get(tag)));
     }
 
     private void replaceFragment(Fragment to) {
@@ -82,8 +63,8 @@ public class FragmentActivity extends AppCompatActivity implements
         if(tag != null){
             try {
                 if(!_dict.containsKey(tag)) {
-                    Class<?> cfra = Class.forName("com.water.uisample.fragment.Fragment" + tag);
-                    Fragment fra = (Fragment) cfra.newInstance();
+                    Class<?> fragment = Class.forName("com.water.uisample.fragment.Fragment" + tag);
+                    Fragment fra = (Fragment) fragment.newInstance();
                     _dict.put(tag, fra);
                 }
             } catch (Exception e) {
@@ -142,6 +123,7 @@ public class FragmentActivity extends AppCompatActivity implements
     {
         Fragment fra = _fm.findFragmentByTag(tag);
         FragmentTransaction ft = _fm.beginTransaction();
+        assert fra != null;
         ft.detach(fra);
         ft.addToBackStack("detach " + tag);
         ft.commit();
@@ -152,6 +134,7 @@ public class FragmentActivity extends AppCompatActivity implements
     {
         Fragment fragment = _fm.findFragmentByTag(tag);
         FragmentTransaction ft = _fm.beginTransaction();
+        assert fragment != null;
         ft.attach(fragment);
         ft.addToBackStack("attach " + tag);
         ft.commit();
@@ -160,6 +143,6 @@ public class FragmentActivity extends AppCompatActivity implements
     @Override
     public void onItemSelected(View view) {
         if (view != null)
-            btnOne.setTextColor(((TextView)view).getCurrentTextColor());
+            binding.btnOne.setTextColor(((TextView)view).getCurrentTextColor());
     }
 }

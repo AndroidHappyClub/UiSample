@@ -3,10 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_auto_complete_text_view.xml" value="0.25833333333333336" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_bottom_view_pager.xml" value="0.34322916666666664" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_button.xml" value="0.3255208333333333" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_dialog.xml" value="0.3255208333333333" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_edit_view.xml" value="0.16691995947315097" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_fragment.xml" value="0.14463019250253292" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_grid_view.xml" value="0.29739583333333336" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_image_list_view.xml" value="0.2578125" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_image_view.xml" value="0.34322916666666664" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_list_view.xml" value="0.34322916666666664" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_menu.xml" value="0.34322916666666664" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_notification.xml" value="0.34322916666666664" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_progress_bar.xml" value="0.34322916666666664" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_radio_button.xml" value="0.32760416666666664" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_rating_bar.xml" value="0.34322916666666664" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_seek_bar.xml" value="0.34322916666666664" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_spinner.xml" value="0.34322916666666664" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_text_view.xml" value="0.32760416666666664" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_toast.xml" value="0.2916666666666667" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_toggle_button.xml" value="0.23052536231884058" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_view_flipper.xml" value="0.2916666666666667" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_view_pager.xml" value="0.3020833333333333" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_view_pager_four.xml" value="0.32760416666666664" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_view_pager_one.xml" value="0.32760416666666664" />

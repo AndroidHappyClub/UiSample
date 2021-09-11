@@ -20,16 +20,23 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
+
+import com.water.uisample.databinding.ActivityTextViewBinding;
 
 import java.lang.reflect.Field;
 
 public class TextViewActivity extends AppCompatActivity {
 
+    private ActivityTextViewBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_text_view);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_text_view);
 
         InsertImage();
     }
@@ -37,50 +44,43 @@ public class TextViewActivity extends AppCompatActivity {
     // 在Java中修改图片大小与位置
     private void ResizeTextViewImage()
     {
-        TextView tv = (TextView) findViewById(
-                R.id.tvShowImage);
-        Drawable[] ds = tv.getCompoundDrawables();
+        Drawable[] ds = binding.tvShowImage.getCompoundDrawables();
         ds[1].setBounds(0, 0, 50, 50);
-        tv.setCompoundDrawables(ds[0], ds[1],
+        binding.tvShowImage.setCompoundDrawables(ds[0], ds[1],
                 ds[2], ds[3]);
     }
 
     // 添加HTML文本
     private void SetHtmlText()
     {
-        TextView tv = (TextView) findViewById(R.id.tvSina);
         String sina = "<a href = 'http://sina.cn'>新浪</a>";
-        tv.setText(Html.fromHtml(sina));
-        tv.setMovementMethod(LinkMovementMethod.getInstance());
+        binding.tvSina.setText(Html.fromHtml(sina));
+        binding.tvSina.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     // 插入图片
     private void InsertImage()
     {
-        TextView tv = (TextView) findViewById(R.id.tvSina);
         String img = "<img src = 'emo'/><br>";
-        tv.setText(Html.fromHtml(img, new Html.ImageGetter() {
-            @Override
-            public Drawable getDrawable(String source) {
-                Drawable draw = null;
-                try {
-                    Field field = R.drawable.class.getField(source);
-                    int resourceId = Integer.parseInt(field.get(null).toString());
-                    draw = getResources().getDrawable(resourceId);
-                    draw.setBounds(0, 0,
-                            draw.getIntrinsicWidth(), draw.getIntrinsicHeight());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                return draw;
+        binding.tvSina.setText(Html.fromHtml(img, source -> {
+            Drawable draw = null;
+            try {
+                Field field = R.drawable.class.getField(source);
+                int resourceId = Integer.parseInt(field.get(null).toString());
+                draw = ContextCompat.getDrawable(this,resourceId);
+                assert draw != null;
+                draw.setBounds(0, 0,
+                        draw.getIntrinsicWidth(), draw.getIntrinsicHeight());
+            } catch (Exception e) {
+                e.printStackTrace();
             }
+            return draw;
         }, null));
     }
 
     // 定制文本
     private void SetSpannableString()
     {
-        TextView tv = (TextView) findViewById(R.id.tvSina);
         int st = Spanned.SPAN_EXCLUSIVE_EXCLUSIVE ;
         String str = "背景超链接样式删除线下划线颜色图片";
         SpannableString span = new SpannableString(str);
@@ -97,32 +97,27 @@ public class TextViewActivity extends AppCompatActivity {
 //6.用颜色标记
         span.setSpan(new ForegroundColorSpan(Color.GREEN), 13, 14, st);
 //7.获取Drawable资源
-        Drawable d = getResources().getDrawable(R.drawable.left);
+        Drawable d = ContextCompat.getDrawable(this,R.drawable.left);
+        assert d != null;
         d.setBounds(0, 0, d.getIntrinsicWidth(), d.getIntrinsicHeight());
 //8.创建ImageSpan,然后用ImageSpan来替换文本
-        ImageSpan imgspan = new ImageSpan(d, ImageSpan.ALIGN_BASELINE);
-        span.setSpan(imgspan, 15, 16, st);
-        tv.setText(span);
+        ImageSpan imageSpan = new ImageSpan(d, ImageSpan.ALIGN_BASELINE);
+        span.setSpan(imageSpan, 15, 16, st);
+        binding.tvSina.setText(span);
     }
 
     // 部分可点击
     private void PartClick(){
-        TextView tv = (TextView) findViewById(R.id.tvSina);
-        tv.setHighlightColor(getResources().getColor(android.R.color.transparent));
-        SpannableString spanableInfo = new SpannableString("测试"+"："+"点击我！");
-        spanableInfo.setSpan(new MyClickableSpan(clickListener),3,7,
+        binding.tvSina.setHighlightColor(getResources().getColor(android.R.color.transparent));
+        SpannableString spannableInfo = new SpannableString("测试"+"："+"点击我！");
+        spannableInfo.setSpan(new MyClickableSpan(clickListener),3,7,
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        tv.setText(spanableInfo);
-        tv.setMovementMethod(LinkMovementMethod.getInstance());
+        binding.tvSina.setText(spannableInfo);
+        binding.tvSina.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
-    private View.OnClickListener clickListener=new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Toast.makeText(TextViewActivity.this,
-                    "点击成功....", Toast.LENGTH_SHORT).show();
-        }
-    };
+    private final View.OnClickListener clickListener= v -> Toast.makeText(TextViewActivity.this,
+            "点击成功....", Toast.LENGTH_SHORT).show();
 
     class MyClickableSpan extends ClickableSpan {
         private final View.OnClickListener mListener;
@@ -130,7 +125,7 @@ public class TextViewActivity extends AppCompatActivity {
             mListener = l;
         }
         @Override
-        public void onClick(View v) {
+        public void onClick(@NonNull View v) {
             mListener.onClick(v);
         }
         @Override

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,18 +22,18 @@ public class ImageListViewActivity extends AppCompatActivity
     private Context _context;
     private final List<Book> _books = new ArrayList<>();
 
+    private ActivityImageListViewBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        com.water.uisample.databinding.ActivityImageListViewBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_image_list_view);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_image_list_view);
         _context = ImageListViewActivity.this;
 
         bindViews();
     }
 
     private void bindViews() {
-
-        ListView lvBook = findViewById(R.id.lvBook);
 
         //数据初始化
         _books.add(new Book(R.drawable.lu_bin_xun_piao_liu_ji,
@@ -61,8 +60,8 @@ public class ImageListViewActivity extends AppCompatActivity
         };
 
         //ListView设置下Adapter：
-        lvBook.setAdapter(_adapter);
-        lvBook.setOnItemClickListener(this);
+        binding.lvBook.setAdapter(_adapter);
+        binding.lvBook.setOnItemClickListener(this);
     }
 
     @Override

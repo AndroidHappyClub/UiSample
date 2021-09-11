@@ -12,25 +12,25 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
-public class NotificationActivity extends AppCompatActivity implements View.OnClickListener {
+import com.water.uisample.databinding.ActivityNotificationBinding;
+
+public class NotificationActivity extends AppCompatActivity {
     private Context _context;
     private NotificationManager _manager;
-    private Notification _notification;
     private Bitmap _LargeIcon = null;
-    private static final int NOTIFYID_FLAG = 0;
-    private Button btnShow;
-    private Button btnClose;
+    private static final int NOTIFICATION_FLAG = 0;
     private Uri _sound;
+
+    private ActivityNotificationBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_notification);
         _context = NotificationActivity.this;
         //创建大图标的Bitmap
         _LargeIcon = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_fruit_caomei);
@@ -40,25 +40,11 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void bindView() {
-        btnShow = (Button) findViewById(R.id.btnShow);
-        btnClose = (Button) findViewById(R.id.btnClose);
-        btnShow.setOnClickListener(this);
-        btnClose.setOnClickListener(this);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnShow:
-                showNotify();
-                break;
-
-            case R.id.btnClose:
-                //除了可以根据ID来取消Notification外,还可以调用cancelAll();关闭该应用产生的所有通知
-                _manager.cancelAll();                          //取消Notification
-                break;
-
-        }
+        binding.btnShow.setOnClickListener(v -> showNotify());
+        binding.btnClose.setOnClickListener(v -> {
+            //除了可以根据ID来取消Notification外,还可以调用cancelAll();关闭该应用产生的所有通知
+            _manager.cancelAll();                          //取消Notification
+        });
     }
 
     private void showNotify(){
@@ -66,6 +52,7 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
         Intent it = new Intent(_context, WebViewActivity.class);
         PendingIntent pit = PendingIntent.getActivity(_context, 0, it, 0);
 
+        Notification _notification;
         if (Build.VERSION.SDK_INT >= 26) {
             String id = "channel_1";
             String description = "143";
@@ -87,7 +74,7 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
                     .setContentIntent(pit)
                     .setAutoCancel(true)
                     .build();
-            _manager.notify(1,  _notification);
+            _manager.notify(1, _notification);
         } else {
             //设置图片,通知标题,发送时间,提示方式等属性
             _notification = new Notification.Builder(NotificationActivity.this)
@@ -102,7 +89,7 @@ public class NotificationActivity extends AppCompatActivity implements View.OnCl
                     .setContentIntent(pit)
                     .setAutoCancel(true)
                     .build();
-            _manager.notify(NOTIFYID_FLAG, _notification);
+            _manager.notify(NOTIFICATION_FLAG, _notification);
         }
     }
 

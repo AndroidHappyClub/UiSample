@@ -1,5 +1,6 @@
 package com.water.uisample;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -8,21 +9,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.PopupMenu;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
+import com.water.uisample.databinding.ActivityMenuBinding;
 
 import java.lang.reflect.Method;
 
 public class MenuActivity extends AppCompatActivity {
-    private TextView tvOptionsMenu;
-    private TextView tvContextMenu;
-    private Button btnShowMenu;
 
-    private int[] _colors ={
+    private final int[] _colors ={
             Color.RED,
             Color.GREEN,
             Color.BLUE,
@@ -31,50 +30,35 @@ public class MenuActivity extends AppCompatActivity {
             Color.CYAN,
             Color.BLACK
     };
-    private String[] _titles ={"红色","绿色","蓝色","黄色","灰色","蓝绿色","黑色"};
+    private final String[] _titles ={"红色","绿色","蓝色","黄色","灰色","蓝绿色","黑色"};
+
+    private ActivityMenuBinding binding;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_menu);
 
         // 注册ContextMenu
-        tvContextMenu = findViewById(R.id.tvContextMenu);
-        registerForContextMenu(tvContextMenu);
+        registerForContextMenu(binding.tvContextMenu);
 
         // 创建PopupMenu
-        btnShowMenu = findViewById(R.id.btnShowMenu);
-        btnShowMenu.setOnClickListener(v -> {
-            PopupMenu pm = new PopupMenu(MenuActivity.this,btnShowMenu);
+        binding.btnShowMenu.setOnClickListener(v -> {
+            PopupMenu pm = new PopupMenu(MenuActivity.this,binding.btnShowMenu);
             pm.getMenuInflater().inflate(R.menu.menu_context, pm.getMenu());
-            pm.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem item) {
-                    switch (item.getItemId()){
-                        case R.id.miShowSettings:
-                            Toast.makeText(MenuActivity.this,item.getTitle(),Toast.LENGTH_SHORT).show();
-                            break;
-                        case R.id.miNetworkSettings:
-                            Toast.makeText(MenuActivity.this,item.getTitle(),Toast.LENGTH_SHORT).show();
-                            break;
-                        case R.id.miOtherSettings:
-                            Toast.makeText(MenuActivity.this,item.getTitle(),Toast.LENGTH_SHORT).show();
-                            break;
-                    }
-                    return true;
-                }
+            pm.setOnMenuItemClickListener(item -> {
+                Toast.makeText(MenuActivity.this,item.getTitle(),Toast.LENGTH_SHORT).show();
+                return true;
             });
             pm.show();
         });
-
-        tvOptionsMenu = (TextView) findViewById(R.id.tvOptionsMenu);
     }
 
     /* 创建选项菜单和子菜单 */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        setIconEnable(menu, true);
+        setIconEnable(menu);
 
         int groupid = 0;
 
@@ -100,7 +84,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     // enable为true时，菜单添加图标有效，enable为false时无效。4.0系统默认无效
-    private void setIconEnable(Menu menu, boolean enable){
+    private void setIconEnable(Menu menu){
         try{
 //             Class<?> mb = Class.forName("com.android.internal.view.menu.MenuBuilder");
             Class<?> mb = Class.forName("android.support.v7.view.menu.MenuBuilder");
@@ -108,7 +92,7 @@ public class MenuActivity extends AppCompatActivity {
             oiv.setAccessible(true);
 
             //MenuBuilder实现Menu接口，创建菜单时，传进来的menu其实就是MenuBuilder对象(java的多态特征)
-            oiv.invoke(menu, enable);
+            oiv.invoke(menu, true);
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -120,10 +104,10 @@ public class MenuActivity extends AppCompatActivity {
         int gid = item.getGroupId();
 
         if(gid == 0 && id>-1) {
-            tvOptionsMenu.setTextColor(_colors[id]);
+            binding.tvOptionsMenu.setTextColor(_colors[id]);
         }
 
-        String msg = String.format("菜单组ID：%d 菜单ID：%d 菜单显示顺序：%d 菜单标题：%s",
+        @SuppressLint("DefaultLocale") String msg = String.format("菜单组ID：%d 菜单ID：%d 菜单显示顺序：%d 菜单标题：%s",
                 gid , id, item.getOrder(), item.getTitle());
         Toast.makeText(MenuActivity.this, msg, Toast.LENGTH_LONG).show();
 
@@ -137,25 +121,23 @@ public class MenuActivity extends AppCompatActivity {
         //子菜单部分：
         MenuInflater inflator = new MenuInflater(this);
         inflator.inflate(R.menu.menu_context, menu);
-        setIconEnable(menu,true);
+        setIconEnable(menu);
         super.onCreateContextMenu(menu, v, menuInfo);
     }
 
     /* 响应上下文菜单 */
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.miShowSettings:
-                Toast.makeText(MenuActivity.this,item.getTitle(),Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.miNetworkSettings:
-                item.setCheckable(true);
-                Toast.makeText(MenuActivity.this,item.getTitle(),Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.miOtherSettings:
-                Toast.makeText(MenuActivity.this,item.getTitle(),Toast.LENGTH_SHORT).show();
-                item.setCheckable(true);
-                break;
+        if(item.getItemId() == R.id.miShowSettings){
+            Toast.makeText(MenuActivity.this,item.getTitle(),Toast.LENGTH_SHORT).show();
+        }
+        if(item.getItemId() == R.id.miNetworkSettings){
+            item.setCheckable(true);
+            Toast.makeText(MenuActivity.this,item.getTitle(),Toast.LENGTH_SHORT).show();
+        }
+        if(item.getItemId() == R.id.miOtherSettings){
+            Toast.makeText(MenuActivity.this,item.getTitle(),Toast.LENGTH_SHORT).show();
+            item.setCheckable(true);
         }
         return true;
     }

@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.water.uisample.SeekBarActivity">
-    <LinearLayout
+<layout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_margin="20dp">
-        <SeekBar
-            android:id="@+id/sbNormal"
+        tools:context="com.water.uisample.SeekBarActivity">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxHeight="5.0dp"
-            android:minHeight="5.0dp"/>
-        <SeekBar
-            android:id="@+id/sbCustom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxHeight="5.0dp"
-            android:minHeight="5.0dp"
-            android:progressDrawable="@drawable/seekbar_progress"
-            android:thumb="@drawable/seekbar_thumb"/>
-    </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="20dp">
+            <SeekBar
+                android:id="@+id/sbNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="5.0dp"
+                android:minHeight="5.0dp"/>
+            <SeekBar
+                android:id="@+id/sbCustom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxHeight="5.0dp"
+                android:minHeight="5.0dp"
+                android:progressDrawable="@drawable/seekbar_progress"
+                android:thumb="@drawable/seekbar_thumb"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

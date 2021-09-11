@@ -1,29 +1,29 @@
 package com.water.uisample;
 
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
+import com.water.uisample.databinding.ActivityProgressBarBinding;
 
 public class ProgressBarActivity extends AppCompatActivity {
-    private ProgressBar pbPlay;
+
+    private ActivityProgressBarBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_progress_bar);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_progress_bar);
         bindViews();
     }
 
     private void bindViews()
     {
-        pbPlay = findViewById(R.id.pbPlay);
-        Button btnPlay = findViewById(R.id.btnPlay);
-        btnPlay.setOnClickListener(view -> {
-            int progress = pbPlay.getProgress();
-            pbPlay.setProgress(progress + 1);
-            pbPlay.setSecondaryProgress(pbPlay.getSecondaryProgress() + 1);
+        binding.btnPlay.setOnClickListener(view -> {
+            int progress = binding.pbPlay.getProgress();
+            binding.pbPlay.setProgress(progress + 1);
+            binding.pbPlay.setSecondaryProgress(binding.pbPlay.getSecondaryProgress() + 1);
         });
     }
 }

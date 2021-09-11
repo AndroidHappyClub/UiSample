@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/miSettings"
+    <item
         android:title="系统设置"
         android:icon="@mipmap/ic_close">
         <menu>
@@ -11,5 +11,5 @@
             </group>
         </menu>
     </item>
-    <item android:id="@+id/miApplication" android:title = "应用"/>
+    <item android:title = "应用"/>
 </menu>

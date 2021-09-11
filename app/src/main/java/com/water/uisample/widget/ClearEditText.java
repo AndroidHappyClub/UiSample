@@ -11,6 +11,8 @@ import android.view.animation.Animation;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 
+import androidx.core.content.ContextCompat;
+
 import com.water.uisample.R;
 
 import java.util.Objects;
@@ -20,12 +22,18 @@ public class ClearEditText extends androidx.appcompat.widget.AppCompatEditText
     //右边的删除按钮
     private Drawable mClearDrawable;
 
+    private Context mContext;
+
     public ClearEditText(Context context) {
         this(context, null);
+
+        this.mContext = context;
     }
 
     public ClearEditText(Context context, AttributeSet attrs) {
         this(context, attrs, android.R.attr.editTextStyle);
+
+        this.mContext = context;
     }
 
     public ClearEditText(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -34,7 +42,7 @@ public class ClearEditText extends androidx.appcompat.widget.AppCompatEditText
     }
 
     private void init() {
-        mClearDrawable = getResources().getDrawable(R.drawable.cancel);
+        mClearDrawable = ContextCompat.getDrawable(mContext,R.drawable.cancel);
         //设置删除按钮的边界
         mClearDrawable.setBounds(0, 0,
                 mClearDrawable.getIntrinsicWidth(), mClearDrawable.getIntrinsicHeight());

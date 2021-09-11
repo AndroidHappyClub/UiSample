@@ -6,27 +6,30 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
+import com.water.uisample.databinding.ActivitySeekBarBinding;
 
 public class SeekBarActivity extends AppCompatActivity {
-    private SeekBar sbNormal;
+
     private Context _context;
+
+    private ActivitySeekBarBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seek_bar);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_seek_bar);
         _context = SeekBarActivity.this;
         bindViews();
     }
 
     private void bindViews() {
-        SeekBar sbCustom = findViewById(R.id.sbCustom);
-        sbNormal= findViewById(R.id.sbNormal);
 
-        sbCustom.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        binding.sbCustom.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                sbNormal.setProgress(progress);
+                binding.sbNormal.setProgress(progress);
             }
 
             @Override
