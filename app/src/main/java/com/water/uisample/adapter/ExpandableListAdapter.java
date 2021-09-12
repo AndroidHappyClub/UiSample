@@ -19,8 +19,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private final ArrayList<ArrayList<BaseItem>> _data;
     private final Context _ctx;
 
-    public ExpandableListAdapter(ArrayList<BaseItem> gdata,
-                                 ArrayList<ArrayList<BaseItem>> data, Context ctx) {
+    public ExpandableListAdapter(
+            ArrayList<BaseItem> gdata,
+            ArrayList<ArrayList<BaseItem>> data,
+            Context ctx
+    ) {
         this._gdata = gdata;
         this._data = data;
         this._ctx = ctx;
@@ -67,13 +70,13 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                              View convertView, ViewGroup parent) {
 
         ViewHolderGroup groupHolder;
-        if(convertView == null){
+        if (convertView == null) {
             convertView = LayoutInflater.from(_ctx).inflate(
                     R.layout.list_view_item_group, parent, false);
             groupHolder = new ViewHolderGroup();
             groupHolder.tvName = convertView.findViewById(R.id.tvName);
             convertView.setTag(groupHolder);
-        }else{
+        } else {
             groupHolder = (ViewHolderGroup) convertView.getTag();
         }
         groupHolder.tvName.setText(_gdata.get(groupPosition).getName());
@@ -85,7 +88,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
         ViewHolderItem itemHolder;
-        if(convertView == null){
+        if (convertView == null) {
             convertView = LayoutInflater.from(_ctx).inflate(
                     R.layout.list_view_item, parent, false);
             itemHolder = new ViewHolderItem();
@@ -93,7 +96,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             itemHolder.tvName = convertView.findViewById(R.id.tvName);
             convertView.findViewById(R.id.tvAuthor).setVisibility(View.GONE);
             convertView.setTag(itemHolder);
-        }else{
+        } else {
             itemHolder = (ViewHolderItem) convertView.getTag();
         }
         itemHolder.ivThumb.setImageResource(_data.get(groupPosition).get(childPosition).getThumb());
@@ -107,11 +110,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         return true;
     }
 
-    private static class ViewHolderGroup{
+    private static class ViewHolderGroup {
         private TextView tvName;
     }
 
-    private static class ViewHolderItem{
+    private static class ViewHolderItem {
         private ImageView ivThumb;
         private TextView tvName;
     }

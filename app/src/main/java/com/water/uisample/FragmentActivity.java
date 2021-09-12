@@ -26,22 +26,29 @@ public class FragmentActivity extends AppCompatActivity implements FragmentSampl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_fragment);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_fragment);
 
         _fm = getSupportFragmentManager();
         _dict = new HashMap<>();
 
-        binding.btnOne.setOnClickListener(v -> replaceFragment((String) v.getTag()));
-        binding.btnTwo.setOnClickListener(v -> replaceFragment((String) v.getTag()));
-        binding.btnThree.setOnClickListener(v -> replaceFragment((String) v.getTag()));
+        binding.btnOne.setOnClickListener(v ->
+                replaceFragment((String) v.getTag())
+        );
+        binding.btnTwo.setOnClickListener(v ->
+                replaceFragment((String) v.getTag())
+        );
+        binding.btnThree.setOnClickListener(v ->
+                replaceFragment((String) v.getTag())
+        );
     }
 
     private void replaceFragment(String tag){
         if(tag != null){
             try {
                 if(!_dict.containsKey(tag)) {
-                    Class<?> cfra = Class.forName("com.water.uisample.fragment.Fragment" + tag);
-                    Fragment fra = (Fragment) cfra.newInstance();
+                    //获取对应的Fragment对象
+                    Class<?> fragment = Class.forName("com.water.uisample.fragment.Fragment" + tag);
+                    Fragment fra = (Fragment) fragment.newInstance();
                     _dict.put(tag, fra);
                 }
             } catch (Exception e) {
@@ -143,6 +150,8 @@ public class FragmentActivity extends AppCompatActivity implements FragmentSampl
     @Override
     public void onItemSelected(View view) {
         if (view != null)
-            binding.btnOne.setTextColor(((TextView)view).getCurrentTextColor());
+            binding.btnOne.setTextColor(
+                    ((TextView)view).getCurrentTextColor()
+            );
     }
 }

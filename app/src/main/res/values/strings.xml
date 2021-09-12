@@ -34,7 +34,7 @@
     <string name="three">Three</string>
     <string name="china">中国</string>
     <string name="content_description">contentDescription</string>
-    <string name="options_menu">选项菜单</string>
+    <string name="options_menu_color_by_top_bar">通过topBar里面的颜色设置选项菜单字体颜色</string>
     <string name="long_press_to_show_context_menu">长按显示上下文菜单</string>
     <string name="show_popupmenu_menu">显示PopupMenu菜单</string>
     <string name="show_notification_bar_notification">显示通知栏通知</string>
@@ -58,4 +58,9 @@
     <string name="activated">已开启</string>
     <string name="open">开</string>
     <string name="close">关</string>
+    <string name="system_setting">系统设置</string>
+    <string name="display_setting">显示设置</string>
+    <string name="internet_setting">网络设置</string>
+    <string name="other_setting">其它设置</string>
+    <string name="application">应用</string>
 </resources>

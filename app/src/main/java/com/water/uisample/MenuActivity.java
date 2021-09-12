@@ -60,24 +60,22 @@ public class MenuActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         setIconEnable(menu);
 
-        int groupid = 0;
+        int groupId = 0;
 
-        // 添加子菜单
-        SubMenu sm = menu.addSubMenu(groupid, -1, 0, "颜色设置").
-                setIcon(R.mipmap.ic_menu_share);
-        // 添加4个菜单项，分成2组（index % 2）：0,1
+        // 添加颜色设置项
+        SubMenu sm = menu.addSubMenu(groupId, -1, Menu.NONE, "颜色设置");
         for (int index =0; index < _colors.length; index++) {
             // 菜单组ID：group ID，菜单ID：item ID，菜单显示顺序：order ID，菜单标题：title
-            sm.add(groupid, index, index, _titles[index]).setIcon(R.mipmap.ic_menu_share);
+            sm.add(groupId, index, index, _titles[index]).setIcon(R.mipmap.ic_menu_share);
         }
 
-        groupid++;
+        groupId++;
 
-        sm = menu.addSubMenu(groupid, -1, Menu.NONE, "基础操作").
-                setIcon(R.mipmap.ic_menu_share);
-        sm.add(groupid, 0, 0, "重命名");
-        sm.add(groupid, 1, 1,  "分享");
-        sm.add(groupid, 2, 2,  "删除");
+        // 添加基础操作设置项
+        sm = menu.addSubMenu(groupId, -1, Menu.NONE, "基础操作");
+        sm.add(groupId, 0, 0, "重命名");
+        sm.add(groupId, 1, 1,  "分享");
+        sm.add(groupId, 2, 2,  "删除");
 
         // 显示菜单
         return true;
@@ -86,12 +84,12 @@ public class MenuActivity extends AppCompatActivity {
     // enable为true时，菜单添加图标有效，enable为false时无效。4.0系统默认无效
     private void setIconEnable(Menu menu){
         try{
-//             Class<?> mb = Class.forName("com.android.internal.view.menu.MenuBuilder");
+            // Class<?> mb = Class.forName("com.android.internal.view.menu.MenuBuilder");
             Class<?> mb = Class.forName("android.support.v7.view.menu.MenuBuilder");
             Method oiv = mb.getDeclaredMethod("setOptionalIconsVisible", boolean.class);
             oiv.setAccessible(true);
 
-            //MenuBuilder实现Menu接口，创建菜单时，传进来的menu其实就是MenuBuilder对象(java的多态特征)
+            // MenuBuilder实现Menu接口，创建菜单时，传进来的menu其实就是MenuBuilder对象(java的多态特征)
             oiv.invoke(menu, true);
         } catch (Exception e){
             e.printStackTrace();
@@ -119,8 +117,8 @@ public class MenuActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
         //子菜单部分：
-        MenuInflater inflator = new MenuInflater(this);
-        inflator.inflate(R.menu.menu_context, menu);
+        MenuInflater menuInflater = new MenuInflater(this);
+        menuInflater.inflate(R.menu.menu_context, menu);
         setIconEnable(menu);
         super.onCreateContextMenu(menu, v, menuInfo);
     }
@@ -128,17 +126,7 @@ public class MenuActivity extends AppCompatActivity {
     /* 响应上下文菜单 */
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.miShowSettings){
-            Toast.makeText(MenuActivity.this,item.getTitle(),Toast.LENGTH_SHORT).show();
-        }
-        if(item.getItemId() == R.id.miNetworkSettings){
-            item.setCheckable(true);
-            Toast.makeText(MenuActivity.this,item.getTitle(),Toast.LENGTH_SHORT).show();
-        }
-        if(item.getItemId() == R.id.miOtherSettings){
-            Toast.makeText(MenuActivity.this,item.getTitle(),Toast.LENGTH_SHORT).show();
-            item.setCheckable(true);
-        }
+        Toast.makeText(MenuActivity.this,item.getTitle(),Toast.LENGTH_SHORT).show();
         return true;
     }
 }

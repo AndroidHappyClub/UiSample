@@ -8,7 +8,8 @@
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_button.xml" value="0.3255208333333333" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_dialog.xml" value="0.3255208333333333" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_edit_view.xml" value="0.16691995947315097" />
-        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_fragment.xml" value="0.14463019250253292" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_expandable_list_view.xml" value="0.32760416666666664" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_fragment.xml" value="0.25" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_grid_view.xml" value="0.29739583333333336" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_image_list_view.xml" value="0.2578125" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_image_view.xml" value="0.34322916666666664" />
@@ -29,10 +30,14 @@
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_view_pager_one.xml" value="0.32760416666666664" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_view_pager_three.xml" value="0.32760416666666664" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_view_pager_two.xml" value="0.32760416666666664" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/activity_web_view.xml" value="0.16197916666666667" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/fragment_sample.xml" value="0.32760416666666664" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/page_ad_four.xml" value="0.32760416666666664" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/page_ad_one.xml" value="0.32760416666666664" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/page_ad_three.xml" value="0.32760416666666664" />
         <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/page_ad_two.xml" value="0.32760416666666664" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/layout/spinner_item_fruit.xml" value="0.29635416666666664" />
+        <entry key="..\:/WorkSpace/GitSpaceAndroid/AndroidHappyClub/UiSample/app/src/main/res/menu/menu_context.xml" value="0.32760416666666664" />
       </map>
     </option>
   </component>

@@ -67,7 +67,6 @@ public class BottomViewPagerActivity extends AppCompatActivity implements
         @NonNull
         @Override
         public Fragment createFragment(int position) {
-
             switch(position) {
                 case 1:
                     return new FragmentTwo();

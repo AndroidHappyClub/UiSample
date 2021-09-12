@@ -44,8 +44,9 @@ public class GridViewActivity extends AppCompatActivity {
 
         binding.gvShare.setAdapter(_adapter);
 
-        binding.gvShare.setOnItemClickListener((parent, view, position, id) -> Toast.makeText(this, "你点击了第 " + position + " 项",
-                Toast.LENGTH_SHORT).show());
-
+        binding.gvShare.setOnItemClickListener(
+                (parent, view, position, id) ->
+                        Toast.makeText(this, "你点击了第 " + position + " 项", Toast.LENGTH_SHORT).show()
+        );
     }
 }

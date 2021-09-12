@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public abstract class DataAdapter<T> extends BaseAdapter {
     private ArrayList<T> _data;
-    private final int _layout;           //布局id
+    private final int _layout; //布局id
 
     public DataAdapter(ArrayList<T> data, int layout) {
         this._data = data;
@@ -34,14 +34,12 @@ public abstract class DataAdapter<T> extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-
         return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = ViewHolder.bind(parent.getContext(),
-                convertView, parent, _layout, position);
+        ViewHolder holder = ViewHolder.bind(parent.getContext(), convertView, parent, _layout, position);
         bindViews(holder, getItem(position));
         return holder.getItemView();
     }

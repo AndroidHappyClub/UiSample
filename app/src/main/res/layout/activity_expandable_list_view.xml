@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="5dp"
-    tools:context=".ExpandableListViewActivity">
-
-    <ExpandableListView
-        android:id="@+id/evlMain"
+<layout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:childDivider="#E02D2F"/>
+        android:padding="5dp"
+        tools:context=".ExpandableListViewActivity">
 
-</RelativeLayout>
+        <ExpandableListView
+            android:id="@+id/evlMain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:childDivider="#E02D2F"/>
+
+    </RelativeLayout>
+</layout>

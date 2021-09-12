@@ -1,24 +1,17 @@
 package com.water.uisample.model;
 
+import androidx.annotation.DrawableRes;
+
 public class BaseItem {
     private int _id;
     private int _thumb;
     private String _name;
 
-    public BaseItem() {
-    }
-
     public BaseItem(String name) {
         _name = name;
     }
 
-    public BaseItem(int thumb, String name) {
-        _thumb = thumb;
-        _name = name;
-    }
-
-    public BaseItem(int id, int thumb, String name) {
-        _id = id;
+    public BaseItem(@DrawableRes int thumb, String name) {
         _thumb = thumb;
         _name = name;
     }

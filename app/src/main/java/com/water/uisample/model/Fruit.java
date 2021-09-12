@@ -1,14 +1,13 @@
 package com.water.uisample.model;
 
+import androidx.annotation.DrawableRes;
+
 public class Fruit {
 
     private int _thumb;
     private String _name;
 
-    public Fruit() {
-    }
-
-    public Fruit(int thumb, String name) {
+    public Fruit(@DrawableRes int thumb, String name) {
         this._thumb = thumb;
         this._name = name;
     }
